@@ -170,18 +170,30 @@
             TREX: { x: 848, y: 2 },
             STAR: { x: 645, y: 2 }
         },
-        HDPI: {
-            CACTUS_LARGE: { x: 652, y: 2 },
-            CACTUS_SMALL: { x: 446, y: 2 },
-            CLOUD: { x: 166, y: 2 },
-            HORIZON: { x: 2, y: 104 },
-            MOON: { x: 954, y: 2 },
-            PTERODACTYL: { x: 260, y: 2 },
-            RESTART: { x: 2, y: 2 },
-            TEXT_SPRITE: { x: 1294, y: 2 },
-            TREX: { x: 1678, y: 2 },
-            STAR: { x: 1276, y: 2 }
-        }
+        // HDPI: {
+        //     CACTUS_LARGE: { x: 652, y: 2 },
+        //     CACTUS_SMALL: { x: 446, y: 2 },
+        //     CLOUD: { x: 166, y: 2 },
+        //     HORIZON: { x: 2, y: 104 },
+        //     MOON: { x: 954, y: 2 },
+        //     PTERODACTYL: { x: 260, y: 2 },
+        //     RESTART: { x: 2, y: 2 },
+        //     TEXT_SPRITE: { x: 1294, y: 2 },
+        //     TREX: { x: 1678, y: 2 },
+        //     STAR: { x: 1276, y: 2 }
+        // }
+        HDPI: { // updated for new sprite sheet
+                CACTUS_LARGE: { x: 1320, y: 24 },
+                CACTUS_SMALL: { x: 910, y: 62 },
+                CLOUD: { x: 357, y: 11 },
+                HORIZON: { x: 2, y: 241 },
+                MOON: { x: 4232, y: 12 }, // not implemented yet
+                PTERODACTYL: { x: 540, y: 30 },
+                RESTART: { x: 6, y: 6 },
+                TEXT_SPRITE: { x: 1934, y: 6 },
+                TREX: { x: 2712, y: 28 },
+                STAR: { x: 4232, y: 12 } // not implemented yet
+            }
     };
 
 
@@ -287,7 +299,8 @@
          */
         loadImages: function () {
             if (IS_HIDPI) {
-                Runner.imageSprite = document.getElementById('offline-resources-2x');
+                // Runner.imageSprite = document.getElementById('offline-resources-2x');
+                Runner.imageSprite = document.getElementById('offline-resources-new');
                 this.spriteDef = Runner.spriteDefinition.HDPI;
             } else {
                 Runner.imageSprite = document.getElementById('offline-resources-1x');
