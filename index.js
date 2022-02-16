@@ -133,7 +133,7 @@
      */
     Runner.defaultDimensions = {
         WIDTH: DEFAULT_WIDTH,
-        HEIGHT: 150
+        HEIGHT: 250
     };
 
 
@@ -184,7 +184,7 @@
         // }
         HDPI: { // updated for new sprite sheet
                 CACTUS_LARGE: { x: 1320, y: 24 },
-                CACTUS_SMALL: { x: 910, y: 62 },
+                CACTUS_SMALL: { x: 910, y: 20 },
                 CLOUD: { x: 357, y: 11 },
                 HORIZON: { x: 2, y: 242 },
                 MOON: { x: 4232, y: 12 }, // not implemented yet
@@ -376,7 +376,7 @@
                 this.dimensions.HEIGHT, Runner.classes.PLAYER);
 
             this.canvasCtx = this.canvas.getContext('2d');
-            this.canvasCtx.fillStyle = '#f7f7f7';
+            this.canvasCtx.fillStyle = '#3485df'; // #3485df is the shade of blue we're using; f7f7f7 is the original
             this.canvasCtx.fill();
             Runner.updateCanvasScaling(this.canvas);
 
@@ -460,7 +460,7 @@
 
                 // Game over panel.
                 if (this.crashed && this.gameOverPanel) {
-                    this.gameOverPanel.updateDimensions(this.dimensions.WIDTH);
+                    this.gameOverPanel.updateDimensions(this.dimensions.WIDTH, this.dimensions.HEIGHT);
                     this.gameOverPanel.draw();
                 }
             }
@@ -564,9 +564,12 @@
                         this.inverted);
                 }
 
-                // Check for collisions.
+                // Check for collisions. Original
+                // var collision = hasObstacles &&
+                    // checkForCollision(this.horizon.obstacles[0], this.tRex);
+                // Debug version draws hitboxes
                 var collision = hasObstacles &&
-                    checkForCollision(this.horizon.obstacles[0], this.tRex);
+                    checkForCollision(this.horizon.obstacles[0], this.tRex, this.canvasCtx);
 
                 if (!collision) {
                     this.distanceRan += this.currentSpeed * deltaTime / this.msPerFrame;
@@ -1444,10 +1447,10 @@
     // TODO: Update collisionbox
     Obstacle.types = [
         {
-            type: 'CACTUS_SMALL',
+            type: 'CACTUS_SMALL', // based on height and width of one small cactus
             width: 34,
             height: 68,
-            yPos: 105,
+            yPos: 170,
             multipleSpeed: 4,
             minGap: 120,
             minSpeed: 0,
@@ -1458,10 +1461,10 @@
             ]
         },
         {
-            type: 'CACTUS_LARGE',
+            type: 'CACTUS_LARGE', // based on height and width of one large cactus2
             width: 52,
-            height: 88,
-            yPos: 90,
+            height: 87,
+            yPos: 151,
             multipleSpeed: 7,
             minGap: 120,
             minSpeed: 0,
@@ -2405,7 +2408,7 @@
     HorizonLine.dimensions = {
         WIDTH: 600,
         HEIGHT: 12,
-        YPOS: 127
+        YPOS: 238
     };
 
 
