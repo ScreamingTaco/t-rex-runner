@@ -186,7 +186,7 @@
                 CACTUS_LARGE: { x: 1320, y: 24 },
                 CACTUS_SMALL: { x: 910, y: 62 },
                 CLOUD: { x: 357, y: 11 },
-                HORIZON: { x: 2, y: 241 },
+                HORIZON: { x: 2, y: 242 },
                 MOON: { x: 4232, y: 12 }, // not implemented yet
                 PTERODACTYL: { x: 540, y: 30 },
                 RESTART: { x: 6, y: 6 },
@@ -1032,11 +1032,11 @@
      */
     GameOverPanel.dimensions = {
         TEXT_X: 0,
-        TEXT_Y: 13,
-        TEXT_WIDTH: 191,
-        TEXT_HEIGHT: 11,
-        RESTART_WIDTH: 36,
-        RESTART_HEIGHT: 32
+        TEXT_Y: 26,
+        TEXT_WIDTH: 380,
+        TEXT_HEIGHT: 25,
+        RESTART_WIDTH: 70,
+        RESTART_HEIGHT: 70
     };
 
 
@@ -1441,11 +1441,12 @@
      * speedOffset: speed faster / slower than the horizon.
      * minSpeed: Minimum speed which the obstacle can make an appearance.
      */
+    // TODO: Update collisionbox
     Obstacle.types = [
         {
             type: 'CACTUS_SMALL',
-            width: 17,
-            height: 35,
+            width: 34,
+            height: 68,
             yPos: 105,
             multipleSpeed: 4,
             minGap: 120,
@@ -1458,8 +1459,8 @@
         },
         {
             type: 'CACTUS_LARGE',
-            width: 25,
-            height: 50,
+            width: 52,
+            height: 88,
             yPos: 90,
             multipleSpeed: 7,
             minGap: 120,
@@ -1472,8 +1473,8 @@
         },
         {
             type: 'PTERODACTYL',
-            width: 46,
-            height: 40,
+            width: 90,
+            height: 67,
             yPos: [100, 75, 50], // Variable height.
             yPosMobile: [100, 50], // Variable height mobile.
             multipleSpeed: 999,
@@ -1538,17 +1539,17 @@
     Trex.config = {
         DROP_VELOCITY: -5,
         GRAVITY: 0.6,
-        HEIGHT: 47,
-        HEIGHT_DUCK: 25,
+        HEIGHT: 84, // 168/2 = 84
+        HEIGHT_DUCK: 53,
         INIITAL_JUMP_VELOCITY: -10,
         INTRO_DURATION: 1500,
         MAX_JUMP_HEIGHT: 30,
         MIN_JUMP_HEIGHT: 30,
         SPEED_DROP_COEFFICIENT: 3,
-        SPRITE_WIDTH: 262,
+        SPRITE_WIDTH: 1050,
         START_X_POS: 50,
-        WIDTH: 44,
-        WIDTH_DUCK: 59
+        WIDTH: 86,
+        WIDTH_DUCK: 114
     };
 
 
@@ -1594,17 +1595,18 @@
      * Animation config for different states.
      * @enum {Object}
      */
-    Trex.animFrames = {
+     Trex.animFrames = {
+        // width of one frame is 178/2 = 89, so about double everything from the original
         WAITING: {
-            frames: [44, 0],
+            frames: [86, 0],
             msPerFrame: 1000 / 3
         },
         RUNNING: {
-            frames: [88, 132],
+            frames: [177, 263],
             msPerFrame: 1000 / 12
         },
         CRASHED: {
-            frames: [220],
+            frames: [355],
             msPerFrame: 1000 / 60
         },
         JUMPING: {
@@ -1612,7 +1614,7 @@
             msPerFrame: 1000 / 60
         },
         DUCKING: {
-            frames: [264, 323],
+            frames: [533, 647],
             msPerFrame: 1000 / 8
         }
     };
@@ -1896,9 +1898,9 @@
      * @enum {number}
      */
     DistanceMeter.dimensions = {
-        WIDTH: 10,
-        HEIGHT: 13,
-        DEST_WIDTH: 11
+        WIDTH: 20,
+        HEIGHT: 25,
+        DEST_WIDTH: 20
     };
 
 
@@ -2147,12 +2149,12 @@
      * @enum {number}
      */
     Cloud.config = {
-        HEIGHT: 14,
+        HEIGHT: 34,
         MAX_CLOUD_GAP: 400,
         MAX_SKY_LEVEL: 30,
         MIN_CLOUD_GAP: 100,
         MIN_SKY_LEVEL: 71,
-        WIDTH: 46
+        WIDTH: 85
     };
 
 
