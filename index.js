@@ -119,7 +119,7 @@
         MAX_OBSTACLE_LENGTH: 3,
         MAX_OBSTACLE_DUPLICATION: 2,
         MAX_SPEED: 13,
-        MIN_JUMP_HEIGHT: 35,
+        MIN_JUMP_HEIGHT: 35, //old: 35
         MOBILE_SPEED_COEFFICIENT: 1.2,
         RESOURCE_TEMPLATE_ID: 'audio-resources',
         SPEED: 6,
@@ -1289,7 +1289,7 @@
      * Maximum obstacle grouping count.
      * @const
      */
-    Obstacle.MAX_OBSTACLE_LENGTH = 3,
+    Obstacle.MAX_OBSTACLE_LENGTH = 2,
 
 
         Obstacle.prototype = {
