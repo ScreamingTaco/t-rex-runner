@@ -133,7 +133,7 @@
      */
     Runner.defaultDimensions = {
         WIDTH: DEFAULT_WIDTH,
-        HEIGHT: 250
+        HEIGHT: 200
     };
 
 
@@ -377,6 +377,7 @@
 
             this.canvasCtx = this.canvas.getContext('2d');
             this.canvasCtx.fillStyle = '#3485df'; // #3485df is the shade of blue we're using; f7f7f7 is the original
+            this.canvasCtx.fillRect(0, 0, this.canvas.width, this.canvas.height)
             this.canvasCtx.fill();
             Runner.updateCanvasScaling(this.canvas);
 
@@ -1450,7 +1451,7 @@
             type: 'CACTUS_SMALL', // based on height and width of one small cactus
             width: 34,
             height: 68,
-            yPos: 170,
+            yPos: 120,
             multipleSpeed: 4,
             minGap: 120,
             minSpeed: 0,
@@ -1464,7 +1465,7 @@
             type: 'CACTUS_LARGE', // based on height and width of one large cactus2
             width: 52,
             height: 87,
-            yPos: 151,
+            yPos: 101,
             multipleSpeed: 7,
             minGap: 120,
             minSpeed: 0,
@@ -2154,9 +2155,9 @@
     Cloud.config = {
         HEIGHT: 34,
         MAX_CLOUD_GAP: 400,
-        MAX_SKY_LEVEL: 30,
+        MAX_SKY_LEVEL: 34,
         MIN_CLOUD_GAP: 100,
-        MIN_SKY_LEVEL: 71,
+        MIN_SKY_LEVEL: 50,
         WIDTH: 85
     };
 
@@ -2408,7 +2409,7 @@
     HorizonLine.dimensions = {
         WIDTH: 600,
         HEIGHT: 12,
-        YPOS: 238
+        YPOS: 188
     };
 
 

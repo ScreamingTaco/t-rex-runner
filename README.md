@@ -10,8 +10,6 @@ More info here later.
 
 ### Gameplay
 * fix obstacle collision boxes
-* figure out background color
-* fix waiting sprite
 
 ### Blockchain
 * set up near login
