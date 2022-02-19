@@ -111,7 +111,7 @@
         GAMEOVER_CLEAR_TIME: 750,
         GAP_COEFFICIENT: 0.6,
         GRAVITY: 0.6,
-        INITIAL_JUMP_VELOCITY: 12,
+        INITIAL_JUMP_VELOCITY: 13, //old: 12
         INVERT_FADE_DURATION: 12000,
         INVERT_DISTANCE: 700,
         MAX_BLINK_COUNT: 3,
@@ -119,7 +119,7 @@
         MAX_OBSTACLE_LENGTH: 3,
         MAX_OBSTACLE_DUPLICATION: 2,
         MAX_SPEED: 13,
-        MIN_JUMP_HEIGHT: 35, //old: 35
+        MIN_JUMP_HEIGHT: 38, //old: 35
         MOBILE_SPEED_COEFFICIENT: 1.2,
         RESOURCE_TEMPLATE_ID: 'audio-resources',
         SPEED: 6,
@@ -580,6 +580,7 @@
                     }
                 } else {
                     this.gameOver();
+                    console.log(collision)
                 }
 
                 var playAchievementSound = this.distanceMeter.update(deltaTime,
@@ -1290,7 +1291,7 @@
      * Maximum obstacle grouping count.
      * @const
      */
-    Obstacle.MAX_OBSTACLE_LENGTH = 2,
+    Obstacle.MAX_OBSTACLE_LENGTH = 1, //switched to one to account for larger obstacles that we use
 
 
         Obstacle.prototype = {
@@ -1456,9 +1457,9 @@
             minGap: 120,
             minSpeed: 0,
             collisionBoxes: [
-                new CollisionBox(0, 7, 5, 27),
-                new CollisionBox(4, 0, 6, 34),
-                new CollisionBox(10, 4, 7, 14)
+                new CollisionBox(0, 9, 5, 27),
+                new CollisionBox(12, 0, 6, 34),
+                new CollisionBox(22, 6, 5, 14)
             ]
         },
         {
@@ -1470,9 +1471,9 @@
             minGap: 120,
             minSpeed: 0,
             collisionBoxes: [
-                new CollisionBox(0, 12, 7, 38),
-                new CollisionBox(8, 0, 7, 49),
-                new CollisionBox(13, 10, 10, 38)
+                new CollisionBox(0, 14, 5, 38),
+                new CollisionBox(20, 0, 5, 49),
+                new CollisionBox(35, 12, 10, 38)
             ]
         },
         {
@@ -1545,10 +1546,10 @@
         GRAVITY: 0.6,
         HEIGHT: 84, // 168/2 = 84
         HEIGHT_DUCK: 53,
-        INIITAL_JUMP_VELOCITY: -10,
+        INIITAL_JUMP_VELOCITY: -12, // old: -10
         INTRO_DURATION: 1500,
-        MAX_JUMP_HEIGHT: 30,
-        MIN_JUMP_HEIGHT: 30,
+        MAX_JUMP_HEIGHT: 40, // old: 30 
+        MIN_JUMP_HEIGHT: 32,
         SPEED_DROP_COEFFICIENT: 3,
         SPRITE_WIDTH: 1050,
         START_X_POS: 50,
@@ -1563,15 +1564,23 @@
      */
     Trex.collisionBoxes = {
         DUCKING: [
-            new CollisionBox(1, 18, 55, 25)
+            new CollisionBox(1, 18, 100, 25)
         ],
-        RUNNING: [
-            new CollisionBox(22, 0, 17, 16),
-            new CollisionBox(1, 18, 30, 9),
-            new CollisionBox(10, 35, 14, 8),
-            new CollisionBox(1, 24, 29, 5),
-            new CollisionBox(5, 30, 21, 4),
-            new CollisionBox(9, 34, 15, 4)
+        RUNNING: [ // for reference, our dino is 174x166 and located at (152,36) on the sprite sheet
+            // 174 + 152 = 326; 166 + 36 = 202 // this is to make things easier for the way my spritesheet is
+            // remember to divide everything by two; 326 / 2 = 163. 202/2 = 101
+            // new CollisionBox(22, 0, 17, 16),
+            // new CollisionBox(1, 18, 30, 9),
+            // new CollisionBox(10, 35, 14, 8),
+            // new CollisionBox(1, 24, 29, 5),
+            // new CollisionBox(5, 30, 21, 4),
+            // new CollisionBox(9, 34, 15, 4)
+            new CollisionBox(41, 0, 40, 35), // head
+            new CollisionBox(1, 38, 65, 6), // upper body/arms
+            new CollisionBox(26, 72, 26, 12), // feet
+            new CollisionBox(7, 54, 56, 12), // lower torso
+            new CollisionBox(7, 54, 56, 12), // upper thighs? Duplicate of above for backwards compatibility (old Dino was different)
+            new CollisionBox(7, 54, 56, 12) // lower thigs
         ]
     };
 
