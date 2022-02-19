@@ -10,7 +10,12 @@ More info here later.
 
 ### Gameplay
 * refine obstacle collision boxes
+* implement secret stream idea
+* enable equipping different skins
 
 ### Blockchain
-* determine DINO coin rewards
-* link to NFT purchase and enable loading
+* ~determine DINO coin rewards~ skipped for sake of time
+* NFTs
+  * set up a store in near (not using mintbase for time's sake)
+  * enable users to purchase NFTs
+  * show purchased NFTs in-game
