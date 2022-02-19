@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="index.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
     <script src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/near-api-js@0.41.0/dist/near-api-js.min.js"></script>
 </head>
 
 <body id="t" class="offline">
     <div id="messageBox" class="sendmessage">
-         <h1 style="text-align: center;font-family: 'Open Sans', sans-serif;">Press Space to start</h1>
+         <h2 style="text-align: center;font-family: 'Open Sans', sans-serif;">Jeffrey the Running Dinosaur's Dinotastic Blockchain Adventure</h2>
          <div class="niokbutton" onclick="okbuttonsend()"></div>
     </div>
     <div id="main-frame-error" class="interstitial-wrapper">
@@ -30,6 +31,11 @@
             </template>
         </div>
     </div>
+     <!-- Start of NEAR Stuff -->
+     <button id="login-btn">Add Text</button>
+     <p id="balance"></p>
+     <script src="near-handler.js"></script>
+     <!-- End of NEAR Stuff -->
 </body>
 
 
@@ -41,6 +47,7 @@
         box.style.visibility="hidden";
     }
 };
+
 </script>
     
 </html>
