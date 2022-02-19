@@ -9,7 +9,6 @@ More info here later.
 ## TODO
 
 ### Gameplay
-* refine obstacle collision boxes
 * implement secret stream idea
 * enable equipping different skins
 

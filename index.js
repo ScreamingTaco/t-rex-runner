@@ -566,11 +566,11 @@
                 }
 
                 // Check for collisions. Original
-                // var collision = hasObstacles &&
-                    // checkForCollision(this.horizon.obstacles[0], this.tRex);
-                // Debug version draws hitboxes
                 var collision = hasObstacles &&
-                    checkForCollision(this.horizon.obstacles[0], this.tRex, this.canvasCtx);
+                    checkForCollision(this.horizon.obstacles[0], this.tRex);
+                // Debug version draws hitboxes
+                // var collision = hasObstacles &&
+                    // checkForCollision(this.horizon.obstacles[0], this.tRex, this.canvasCtx);
 
                 if (!collision) {
                     this.distanceRan += this.currentSpeed * deltaTime / this.msPerFrame;
