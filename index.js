@@ -300,7 +300,7 @@
         loadImages: function () {
             if (IS_HIDPI) {
                 // Runner.imageSprite = document.getElementById('offline-resources-2x');
-                document.getElementById('spritesheet').src = "assets/dino.dino_default_greyscale.png"
+                // document.getElementById('spritesheet').src = "assets/dino.dino_default_greyscale.png"
                 Runner.imageSprite = document.getElementById('spritesheet');
 
                 this.spriteDef = Runner.spriteDefinition.HDPI;
