@@ -25,7 +25,19 @@ html, body {
 }
 
 .skin {
-  width: 600px;
+  width: 800px;
+}
+
+.skin:hover {
+  border: 2px solid teal;
+}
+
+.selected {
+  border: 2px solid teal;
+}
+
+ul {
+  list-style-type: none;  
 }
 
 /* Offline page */

@@ -6,15 +6,18 @@ This is our entry to MetaBuild 2022.
 
 More info here later.
 
+## Setup Instructions
+
+1. Download this code from github
+2. Use any http server software to host the main directory
+3. Go to the address it tells you
+
 ## TODO
 
 ### Gameplay
 * implement secret stream idea
-* enable equipping different skins
 
 ### Blockchain
 * ~determine DINO coin rewards~ skipped for sake of time
 * NFTs
-  * set up a store in near (not using mintbase for time's sake)
   * enable users to purchase NFTs
-  * show purchased NFTs in-game

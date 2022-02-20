@@ -30,6 +30,7 @@ if (!wallet.isSignedIn()) {
   button.textContent = 'SignIn with NEAR';
 } else {
   button.textContent = 'Sign ' + wallet.getAccountId() + ' out';
+  updateStats()
 }
 
 button.addEventListener("click", loginBtn)
@@ -40,6 +41,9 @@ function loginBtn() {
   if (wallet.isSignedIn()) {
     wallet.signOut();
     console.log("Signing out")
+    skins = document.getElementById("skins")
+    skins.innerHTML = ""
+    updateSkin("assets/dino.dino_default_2.0.png")
     button.textContent = 'SignIn with NEAR';
   } else {
     wallet.requestSignIn({
@@ -80,7 +84,6 @@ function updateStats() {
     var skins = document.getElementById("skins")
     skins.innerHTML = "";
     for (i in dino_tokens) {
-      console.log(i + " : " + dino_tokens[i])
       li = document.createElement("li")
       img = document.createElement("img")
       img.src = dino_tokens[i];
@@ -91,12 +94,19 @@ function updateStats() {
       skins.lastChild.id = i
     }
     // add click event listener
-      
+
     const childern = skins.childNodes;
 
     // iterate over all child nodes
     childern.forEach(li => {
-      li.addEventListener("click", function(){updateSkin(li.firstChild.src)})
+      li.addEventListener("click", function () {
+        // clear skin selection
+        for (elem of document.getElementsByClassName("selected")) {
+          elem.classList.remove("selected");
+        }
+        updateSkin(li.firstChild.src)
+        li.className += "selected"
+      })
       console.log(li.firstChild.src);
     });
   });
@@ -104,10 +114,12 @@ function updateStats() {
 
 function updateSkin(src) {
   document.getElementById("spritesheet").src = src
-  Runner.imageSprite = document.getElementById('spritesheet');
-  console.log("Event listener set to" + src)
-
+  Runner.imageSprite = document.getElementById('spritesheet')
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  if (wallet.isSignedIn()) { updateStats }
+});
 
 // TODO: Implement this
 // amount is in the smallest denomination of dino coins (which goes to 8 decimal places)
