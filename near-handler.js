@@ -17,6 +17,11 @@ const contract = new nearApi.Contract(wallet.account(), 'jeffrey_the_dinosaur.te
   changeMethods: ['ft_transfer', 'storage_balance_of', 'storage_deposit']
 });
 
+const nfts = new nearApi.Contract(wallet.account(), 'example-nft.testnet', {
+  viewMethods: ['nft_tokens_for_owner', 'TokenMetadata', 'JsonToken']
+  // changeMethods: ['ft_transfer', 'storage_balance_of', 'storage_deposit']
+});
+
 // set the initial button text
 
 const button = document.getElementById("login-btn")
@@ -51,16 +56,57 @@ function loginBtn() {
 }
 
 function updateStats() {
-  contract.ft_balance_of({
-    account_id: wallet.getAccountId()
-  })
-    .then(messages => {
-      console.log("Raw Balance: " + messages);
-      balance = parseFloat(messages) / 100000000
-      console.log("Balance adjusted for decimal: " + balance)
-      balance_text = document.getElementById('balance')
-      balance_text.textContent = "$DINO: " + balance
+  // contract.ft_balance_of({
+  //   account_id: wallet.getAccountId()
+  // })
+  //   .then(messages => {
+  //     console.log("Raw Balance: " + messages);
+  //     balance = parseFloat(messages) / 100000000
+  //     console.log("Balance adjusted for decimal: " + balance)
+  //     balance_text = document.getElementById('balance')
+  //     balance_text.textContent = "$DINO: " + balance
+  //   });
+  nfts.nft_tokens_for_owner({
+    account_id: accountId
+  }).then(messages => {
+    var dino_tokens = [] // holds the images for our dino tokens
+    for (i in messages) {
+      token_id = messages[i].token_id
+      // check if its a dino one
+      if (token_id.slice(0, 5) == "dino.") {
+        dino_tokens.push(messages[i].metadata.media)
+      }
+    }
+    var skins = document.getElementById("skins")
+    skins.innerHTML = "";
+    for (i in dino_tokens) {
+      console.log(i + " : " + dino_tokens[i])
+      li = document.createElement("li")
+      img = document.createElement("img")
+      img.src = dino_tokens[i];
+      img.className = "skin";
+
+      li.appendChild(img)
+      skins.appendChild(li)
+      skins.lastChild.id = i
+    }
+    // add click event listener
+      
+    const childern = skins.childNodes;
+
+    // iterate over all child nodes
+    childern.forEach(li => {
+      li.addEventListener("click", function(){updateSkin(li.firstChild.src)})
+      console.log(li.firstChild.src);
     });
+  });
+}
+
+function updateSkin(src) {
+  document.getElementById("spritesheet").src = src
+  Runner.imageSprite = document.getElementById('spritesheet');
+  console.log("Event listener set to" + src)
+
 }
 
 // TODO: Implement this
