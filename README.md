@@ -21,3 +21,4 @@ More info here later.
 * ~determine DINO coin rewards~ skipped for sake of time
 * NFTs
   * enable users to purchase NFTs
+  * fix skin selection after login glitch
