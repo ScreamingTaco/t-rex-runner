@@ -15,11 +15,13 @@ More info here later.
 ## TODO
 
 ### Gameplay
-* implement secret stream idea
+* implement blockcahin data stream idea
+* refine hitboxes
+* improve jump mechanics
 
 ### Blockchain
-* ~determine DINO coin rewards~ skipped for sake of time
+* integrate $DINO rewards (couldn't figure this out in time for the hacakthon submission due date)
 * NFTs
   * enable users to purchase NFTs
   * fix skin selection glitchs
-  * clean up skin selector UI (show only dino and show NFT title)
+  * clean up skin selector UI
